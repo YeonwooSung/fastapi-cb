@@ -2,7 +2,7 @@ import asyncio
 import inspect
 from datetime import timedelta, datetime
 from functools import wraps
-from typing import Optional, Iterable, Callable, Coroutine, Type, List, Union, Tuple
+from typing import Optional, Iterable, Callable, Coroutine, Type, List, Union
 
 from .listener import CircuitBreakerListener
 from .state import CircuitBreakerState, CircuitBreakerBaseState
@@ -259,7 +259,8 @@ class CircuitBreaker:
             async def _inner_wrapper_async(*args, **kwargs):
                 return await self.call_async(func, *args, **kwargs)
 
-            return_func = _inner_wrapper_async if inspect.iscoroutinefunction(func) else _inner_wrapper
+            is_coroutine = inspect.iscoroutinefunction(func)
+            return_func = _inner_wrapper_async if is_coroutine else _inner_wrapper
             return_func._ignore_on_call = ignore_on_call
             return return_func
 
