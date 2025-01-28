@@ -15,10 +15,6 @@ add support for integration with FastAPI.
 - [pybreaker](https://github.com/danielfm/pybreaker)
 - [aiobreaker](https://github.com/arlyon/aiobreaker)
 
-## TODO
-
-- Make decorator and singleton available just like [fastapi-cache](https://github.com/long2ice/fastapi-cache)
-
 ## Features
 
 - Works well with FastAPI framework
